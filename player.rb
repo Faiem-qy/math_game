@@ -1,24 +1,24 @@
-class player
+class Player
   attr_reader :name, :lives
 
-  def initilize(name)
-    @name = name
-    @lives = 3
+  def initialize(name)
+    @name = name #initialize the player with a name
+    @lives = 3   # start the player with 3 lives
   end
 
   def answer_question(question)
-    puts "#{@name}; #{question}"
-    player_answer - gets.chomp.to_i
+    puts "#{@name}: #{question}" #display player name and math question
+    player_answer = gets.chomp.to_i
 
     if question.check_answer(player_answer)
       puts "#{@name}: YES! You are correct."
     else 
       puts "#{@name}: Seriously? No!"
-      loose_life
+      lose_life
     end
   end
 
-  def loose_life #Decrements the player's lives when the answer to the question is incorrect
+  def lose_life #Decrements the player's lives when the answer to the question is incorrect
     @lives -= 1
   end
 
@@ -28,4 +28,5 @@ class player
 
   def to_s #Returns a string representation of the player for output
     "#{@name}: #{@lives}/3"
+  end
 end
